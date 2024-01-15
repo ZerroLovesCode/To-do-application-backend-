@@ -1,0 +1,22 @@
+{
+  "name": "to-do-application",
+  "version": "1.0.0",
+  "description": "A to do application to help you stay organized",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZerroLovesCode/To-do-application.git"
+  },
+  "author": "ZerroLovesCode",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZerroLovesCode/To-do-application/issues"
+  },
+  "homepage": "https://github.com/ZerroLovesCode/To-do-application#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
