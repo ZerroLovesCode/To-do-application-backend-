@@ -15,7 +15,8 @@ const todoSchema = new mongoose.Schema({
             title: String,
             description: String,
             priority: Number,
-            completed: Boolean
+            completed: Boolean,
+            id: Number
         }
     ]
 })
