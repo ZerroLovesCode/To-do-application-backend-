@@ -106,14 +106,44 @@ app.patch("/update-todo", userMiddleware, async (req, res) => {
     const value = req.body.value;
     const id = req.body.id;
 
-    const updateObj = { [`todos.$.${target}`]: value }
-    await Todo.updateOne({ username, "todos.id": id },
-        {
-            "$set": updateObj
+    try {
+        const updateObj = { [`todos.$.${target}`]: value }
+        await Todo.updateOne({ username, "todos.id": id },
+            {
+                "$set": updateObj
+            })
+        res.json({
+            msg: "Target updated"
         })
-    res.json({
-        msg: "Target updated"
-    })
+    }
+    catch (e) {
+        console.log(e);
+        res.status(500).json({
+            msg: "Something went wrong"
+        })
+    }
+})
+
+app.patch("/delete-todo", userMiddleware, async (req, res) => {
+    const username = req.username;
+    const id = req.body.id;
+
+    try {
+        await Todo.updateOne({
+            username,
+        }, {
+            "$pull": { todos: { id: id } }
+        })
+        res.json({
+            msg: "Deleted todo"
+        })
+    }
+    catch (e) {
+        console.log(e);
+        res.status(500).json({
+            msg: "Something went wrong"
+        })
+    }
 })
 
 app.listen(PORT)
